@@ -1,0 +1,382 @@
+/*
+Theme Name: PogoStudios
+Theme URI: https://pogostudios.com
+Description: Modern music studio website with booking system.
+Author: PogoDev
+Version: 1.0
+*/
+
+:root {
+  --color-primary: #ff3860;
+  --color-secondary: #864aff;
+  --color-dark: #040308;
+  --color-dark-alt: #0d0b16;
+  --color-light: #f5f5f5;
+  --color-muted: #8b8b8b;
+  --gradient-primary: linear-gradient(120deg, #ff3860 0%, #ff9a3c 50%, #864aff 100%);
+  --gradient-dark: linear-gradient(135deg, #0c0a16 0%, #120d24 40%, #07050c 100%);
+  --font-primary: 'Poppins', 'Roboto', sans-serif;
+  --font-display: 'Space Grotesk', 'Poppins', sans-serif;
+  --transition-base: all 0.3s ease;
+  --blur-card: rgba(255, 255, 255, 0.04);
+  --input-bg: #1e1e1e;
+  --input-border: #3d3d3d;
+  --input-text: #f0f0f0;
+  --input-placeholder: #888888;
+  --input-focus: #ff3860;
+}
+
+body {
+  font-family: var(--font-primary);
+  color: var(--color-light);
+  background-color: var(--color-dark);
+  background-image: radial-gradient(circle at top, rgba(255, 56, 96, 0.12), transparent 55%),
+    radial-gradient(circle at 20% 20%, rgba(134, 74, 255, 0.15), transparent 30%);
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: var(--transition-base);
+}
+
+a:hover {
+  color: #c72130;
+}
+
+.btn-pogo {
+  background-image: var(--gradient-primary);
+  color: var(--color-light);
+  border-radius: 999px;
+  padding: 0.85rem 1.9rem;
+  font-weight: 700;
+  border: none;
+  letter-spacing: 0.02em;
+  box-shadow: 0 15px 35px rgba(255, 56, 96, 0.35);
+  transition: var(--transition-base);
+}
+
+.btn-pogo:hover,
+.btn-pogo:focus {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 20px 40px rgba(255, 56, 96, 0.45);
+}
+
+.hero {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(rgba(4, 3, 8, 0.85), rgba(4, 3, 8, 0.9)),
+    url('https://images.unsplash.com/photo-1487215078519-e21cc028cb29?auto=format&fit=crop&w=1600&q=80') center/cover;
+  color: var(--color-light);
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 20%, rgba(255, 56, 96, 0.25), transparent 60%);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3vw, 3rem);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--color-muted);
+}
+
+.glassy-card {
+  padding: 2rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+}
+
+.testimonial {
+  padding: 2rem;
+  border-radius: 20px;
+  background: rgba(7, 5, 12, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45);
+  transition: var(--transition-base);
+  min-height: 100%;
+}
+
+.testimonial:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 56, 96, 0.4);
+}
+
+.booking-card {
+  border-radius: 16px;
+  padding: 2rem;
+  background: rgba(10, 9, 16, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 40px 80px rgba(0, 0, 0, 0.45);
+}
+
+.booking-card .form-label {
+  color: var(--color-light);
+  font-weight: 500;
+}
+
+.booking-card .form-control,
+.booking-card .form-select,
+.contact-card .form-control,
+.contact-card .form-select {
+  background-color: var(--input-bg);
+  border: 1px solid var(--input-border);
+  color: var(--input-text);
+  border-radius: 14px;
+  padding: 0.85rem 1rem;
+  transition: var(--transition-base);
+}
+
+.booking-card .form-control:focus,
+.booking-card .form-select:focus,
+.contact-card .form-control:focus,
+.contact-card .form-select:focus {
+  border-color: var(--input-focus);
+  box-shadow: 0 0 0 2px rgba(255, 56, 96, 0.25);
+  color: var(--input-text);
+  background-color: var(--input-bg);
+}
+
+.booking-card .form-control::placeholder,
+.contact-card .form-control::placeholder {
+  color: var(--input-placeholder);
+}
+
+.booking-slot {
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--color-light);
+  transition: var(--transition-base);
+}
+
+.booking-slot.disabled {
+  background: #1e1e1e;
+  color: #777;
+  cursor: not-allowed;
+}
+
+.booking-slot.selected {
+  border: 2px solid #e63946;
+  background: rgba(230, 57, 70, 0.08);
+  box-shadow: 0 20px 40px rgba(230, 57, 70, 0.25);
+}
+
+.booking-slot:not(.disabled):hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.booking-slot .status {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.booking-slot .status.status-available {
+  color: #cccccc;
+}
+
+.booking-slot .status.status-selected {
+  color: #e63946;
+}
+
+.booking-slot .status.status-disabled {
+  color: #777777;
+}
+
+.booking-status {
+  border-radius: 16px;
+  padding: 0.85rem 1rem;
+  font-weight: 500;
+  display: none;
+  margin-top: 1.5rem;
+}
+
+.booking-status.show {
+  display: block;
+}
+
+.booking-status.success {
+  color: #90ee90;
+  border: 1px solid rgba(144, 238, 144, 0.4);
+  background: rgba(144, 238, 144, 0.08);
+}
+
+.booking-status.error {
+  color: #ff6b6b;
+  border: 1px solid rgba(255, 107, 107, 0.35);
+  background: rgba(255, 107, 107, 0.08);
+}
+
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-light);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.stat-chip {
+  padding: 1.5rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  min-width: 140px;
+}
+
+.stat-chip strong {
+  font-size: 1.75rem;
+  display: block;
+}
+
+.grid-line {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 24px;
+  padding: 3rem;
+}
+
+.grid-line::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='rgba(255,255,255,0.04)' stroke-width='1'%3E%3Cpath d='M0 50h200M0 100h200M0 150h200'/%3E%3Cpath d='M50 0v200M100 0v200M150 0v200'/%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.floating-badge {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  font-size: 0.9rem;
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.6s forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-dark {
+  background: var(--gradient-dark);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+footer {
+  background: #030206;
+  color: var(--color-light);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+footer a {
+  color: var(--color-light);
+}
+
+.contact-card {
+  background: var(--color-dark);
+  color: var(--color-light);
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+.map-embed iframe {
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  min-height: 320px;
+}
+
+.pagination .page-numbers {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin: 0 4px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--color-light);
+  text-decoration: none;
+  transition: var(--transition-base);
+}
+
+.pagination .page-numbers.current,
+.pagination .page-numbers:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 60vh;
+    text-align: center;
+    padding-top: 4rem;
+  }
+
+  .hero .btn-pogo {
+    width: 100%;
+  }
+
+  .navbar-brand {
+    font-size: 1.25rem;
+  }
+}
+.site-header {
+  background: rgba(3, 2, 6, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.navbar .nav-link {
+  color: var(--color-light) !important;
+  letter-spacing: 0.03em;
+}
+
+.navbar .nav-link:hover {
+  color: var(--color-primary) !important;
+}
