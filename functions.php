@@ -57,6 +57,25 @@ function pogostudios_enqueue_assets()
 }
 add_action('wp_enqueue_scripts', 'pogostudios_enqueue_assets');
 
+function pogostudios_enqueue_agenda_assets()
+{
+    if (is_page_template('template-booking-agenda.php')) {
+        $agenda_js = get_template_directory() . '/assets/js/agenda.js';
+        $agenda_version = POGOSTUDIOS_VERSION;
+        if (file_exists($agenda_js)) {
+            $agenda_version .= '-' . filemtime($agenda_js);
+        }
+        wp_enqueue_script(
+            'pogostudios-agenda',
+            get_template_directory_uri() . '/assets/js/agenda.js',
+            ['jquery'],
+            $agenda_version,
+            true
+        );
+    }
+}
+add_action('wp_enqueue_scripts', 'pogostudios_enqueue_agenda_assets');
+
 /**
  * Register Booking CPT
  */

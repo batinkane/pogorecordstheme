@@ -170,8 +170,11 @@
     const clearSlotSelection = () => {
         selectedSlot = '';
         timeSelect.val('');
-        slotsWrapper.find('.booking-slot').removeClass('selected disabled');
+        slotsWrapper.find('.booking-slot').removeClass('selected');
         slotsWrapper.find('.booking-slot .status')
+            .filter(function () {
+                return !$(this).closest('.booking-slot').hasClass('disabled');
+            })
             .removeClass('status-selected status-disabled text-success text-muted')
             .addClass('status-available')
             .text('MÜSAİT');
