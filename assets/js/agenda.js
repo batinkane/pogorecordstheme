@@ -50,20 +50,16 @@
     };
 
     const formatDateLabel = (dateStr) => {
-        const date = new Date(dateStr);
-        if (Number.isNaN(date.getTime())) {
+        if (!/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(dateStr)) {
             return dateStr;
         }
-
-        const day = String(date.getDate()).padStart(2, '0');
+        const [year, month, day] = dateStr.split('-').map(Number);
+        const date = new Date(year, month - 1, day);
         const monthNames = [
             'Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran',
             'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'
         ];
-        const month = monthNames[date.getMonth()];
-        const year = date.getFullYear();
-
-        return `${day} ${month} ${year}`;
+        return `${String(day).padStart(2, '0')} ${monthNames[month - 1]} ${year}`;
     };
 
     const isDateInPast = (date) => {
@@ -74,7 +70,14 @@
 
     const isBlackout = (dateStr) => blackoutDates.includes(dateStr);
 
-    const dayKey = (date) => date.toISOString().split('T')[0];
+    const formatIsoDate = (date) => {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    };
+
+    const dayKey = (date) => formatIsoDate(date);
 
     const showTooltip = (content, rect) => {
         if (!tooltipEl.length) {

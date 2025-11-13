@@ -397,6 +397,17 @@ a:hover {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.agenda-panel h4,
+.agenda-panel h5 {
+  font-size: 1.15rem;
+}
+
+.agenda-panel label {
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
 }
 
 .agenda-slots__list {
@@ -413,6 +424,7 @@ a:hover {
   align-items: center;
   color: var(--color-light);
   transition: var(--transition-base);
+  font-size: 0.95rem;
 }
 
 .agenda-slot button {
@@ -439,6 +451,22 @@ a:hover {
 .agenda-slot.disabled {
   opacity: 0.4;
   cursor: not-allowed;
+}
+
+.agenda-panel .form-control,
+.agenda-panel .form-select {
+  font-size: 0.9rem;
+  padding: 0.55rem 0.9rem;
+  min-height: 44px;
+  line-height: 1.4;
+}
+
+.agenda-panel .form-control::placeholder {
+  font-size: 0.85rem;
+}
+
+.agenda-panel .booking-status {
+  font-size: 0.85rem;
 }
 
 .agenda-tooltip {
