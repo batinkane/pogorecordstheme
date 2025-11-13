@@ -34,7 +34,6 @@ add_action('after_setup_theme', 'pogostudios_setup');
  */
 function pogostudios_enqueue_assets()
 {
-    wp_enqueue_style('pogostudios-fonts', 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap', [], null);
     wp_enqueue_style('pogostudios-bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css', [], '5.3.2');
     wp_enqueue_style('pogostudios-style', get_stylesheet_uri(), ['pogostudios-bootstrap'], POGOSTUDIOS_VERSION);
 
@@ -56,6 +55,28 @@ function pogostudios_enqueue_assets()
     ]);
 }
 add_action('wp_enqueue_scripts', 'pogostudios_enqueue_assets');
+
+function pogo_enqueue_fonts()
+{
+    wp_enqueue_style(
+        'pogo-fonts',
+        'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500;600&display=swap',
+        [],
+        null
+    );
+}
+add_action('wp_enqueue_scripts', 'pogo_enqueue_fonts');
+
+function pogo_load_fonts()
+{
+    wp_enqueue_style(
+        'pogo-google-fonts',
+        'https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,300;7..72,400;7..72,500&display=swap',
+        [],
+        null
+    );
+}
+add_action('wp_enqueue_scripts', 'pogo_load_fonts');
 
 function pogostudios_enqueue_agenda_assets()
 {
